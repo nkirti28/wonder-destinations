@@ -42,12 +42,12 @@ section {
 }
 /* Hero Style Start */
 
-.hero {
+.hero_main {
   background-image: url("../images/an1.jpg");
   background-size: cover;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content:start;
 
   background-position: 80%;
 }

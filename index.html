@@ -10,7 +10,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
@@ -66,7 +69,7 @@
     </nav>
     <!--end of header-->
     <!-- jumbotron/ hero section -->
-    <section class="hero">
+    <section class="hero_main">
       <div class="hero-cta">
         <h2>Wonder Destinations is the best way to travel</h2>
 
@@ -81,6 +84,25 @@
       </div>
     </section>
 
+    <!-- Start Hero Carousel -->
+    <section class="hero is-medium has-carousel">
+      <div id="carousel-demo" class="hero-carousel">
+        <div class="item-1">
+          
+        <div class="item-2">
+          <!-- Slide Content -->
+        </div>
+        <div class="item-3">
+          <!-- Slide Content -->
+        </div>
+      </div>
+      <div class="hero-head"></div>
+      <div class="hero-body">Hello world</div>
+      <div class="hero-foot"></div>
+    </section>
+    <!-- End Hero Carousel -->
+
+    <!-- Footer -->
     <footer class="footer has-background-dark">
       <div class="container">
         <div class="columns">
@@ -91,7 +113,7 @@
             by @WD Company
             <div class="bd-footer-tsp">
               <p>
-                The source code is licensed MIT. The website content is licensed
+                The source code is licensed KU. The website content is licensed
                 by company @2022
               </p>
             </div>
@@ -123,11 +145,19 @@
         </div>
       </div>
     </footer>
+    <!-- end of footer-->
     <!-- add script at the bottom of the body -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- add the js file here -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script>
+      bulmaCarousel.attach("#carousel-demo", {
+        slidesToScroll: 1,
+        slidesToShow: 4,
+      });
+    </script>
   </body>
 </html>
