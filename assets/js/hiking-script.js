@@ -2,6 +2,7 @@ var FormEl = document.querySelector("#city-form");
 var inputCityEl = document.querySelector("#city-name");
 var cityBtn = document.querySelector("#city-button");
 var stateInputEl = document.querySelector("#state");
+var trailDiv = document.querySelector("#trail-div");
 
 // get name of destination city and state
 var getCityName = function (event) {
@@ -32,15 +33,32 @@ var getTrailData = function (cityName, stateName) {
       response.json().then(function (data) {
         var trails = Object.values(data);
         console.log(trails);
+
         trails.forEach(function (trail) {
           if (trail.city === cityName && trail.state === stateName) {
-            console.log(trail.name);
+            console.log(trail.city, trail.state);
+            var name = trail.name;
+            var activities = trail.activities;
+
+            displayTrailinfo(name, activities);
           }
         });
       });
     }
+    // .catch((err) => console.error(err));
   });
-  // .catch((err) => console.error(err));
+};
+
+// Function to display results on screen
+var displayTrailinfo = function (trail, activities) {
+  var trailHeader = document.createElement("h4");
+  trailHeader.textContent = trail + ":";
+
+  var hiking = activities.hiking;
+  var biking = activities["mountain biking"];
+  var camping = activities.camping;
+  console.log(trail, hiking, biking, camping);
+  trailDiv.appendChild(trailHeader);
 };
 
 cityBtn.addEventListener("click", getCityName);
