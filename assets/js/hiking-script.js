@@ -105,6 +105,7 @@ var displayTrailinfo = function (trail, activities, dir) {
     var bikingUrl = document.createElement("a");
     bikingUrl.textContent = "Click Here For More Info";
     bikingUrl.setAttribute("href", biking.url);
+    bikingUrl.setAttribute("target", "_blank");
     bikingUrl.classList = "mb-3";
 
     trailCard.append(bikingHeader, bikingInfo, bikingUrl);
