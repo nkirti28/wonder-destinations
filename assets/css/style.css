@@ -47,8 +47,7 @@ section {
   background-size: cover;
   display: flex;
   flex-wrap: wrap;
-  justify-content:start;
-
+  justify-content: start;
   background-position: 80%;
 }
 .hero-cta {
