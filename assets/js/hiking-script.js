@@ -3,6 +3,7 @@ var inputCityEl = document.querySelector("#city-name");
 var cityBtn = document.querySelector("#city-button");
 var stateInputEl = document.querySelector("#state");
 var trailDiv = document.querySelector("#trail-div");
+var modalEl = document.querySelector("#alert-modal");
 
 // get name of destination city and state
 var getCityName = function (event) {
@@ -18,6 +19,9 @@ var getCityName = function (event) {
   var stateName = stateInputEl.value;
   console.log(cityName, stateName);
   getTrailData(cityName, stateName);
+  inputCityEl.value = "";
+  stateInputEl.value = "";
+  trailDiv.innerHTML = "";
 };
 
 // pass city and state name to api to get trail data
@@ -33,6 +37,8 @@ var getTrailData = function (cityName, stateName) {
   var apiUrl =
     "https://trailapi-trailapi.p.rapidapi.com/activity/?lat=34.1&limit=25&lon=-105.2&q-city_cont=" +
     cityName +
+    "&q-state_cont=" +
+    stateName +
     "&radius=25";
 
   fetch(apiUrl, options).then(function (response) {
@@ -49,20 +55,24 @@ var getTrailData = function (cityName, stateName) {
             var dir = trail.directions;
 
             displayTrailinfo(name, activities, dir);
+          } else {
+            modalAlert();
           }
         });
       });
+    } else {
+      modalAlert();
     }
-    // .catch((err) => console.error(err));
   });
 };
 
 // Function to display results on screen
 var displayTrailinfo = function (trail, activities, dir) {
   var trailCard = document.createElement("div");
-  trailCard.classList = "trail-card box";
+  trailCard.classList =
+    "trail-card box has-background-grey-light has-text-white";
   var trailHeader = document.createElement("h4");
-  trailHeader.classList = "title is-4";
+  trailHeader.classList = "title is-4 has-text-warning";
   trailHeader.textContent = trail + ":";
 
   var dirHeader = document.createElement("h5");
@@ -131,4 +141,13 @@ var displayTrailinfo = function (trail, activities, dir) {
   // console.log(trail, hiking, biking, camping);
 };
 
+var modalAlert = function () {
+  modalEl.classList.add("is-active");
+};
+
+var closeModal = function (event) {
+  modalEl.classList.remove("is-active");
+};
+
 cityBtn.addEventListener("click", getCityName);
+modalEl.addEventListener("click", closeModal);
