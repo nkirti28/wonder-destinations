@@ -37,12 +37,11 @@ nav h1 a {
 nav h1 a:hover {
   color: white;
 }
-section {
-  padding: 60px;
-}
+
 /* Hero Style Start */
 
 .hero_main {
+  
   background-image: url("../images/an1.jpg");
   background-size: cover;
   display: flex;
