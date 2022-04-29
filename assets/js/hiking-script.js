@@ -7,7 +7,14 @@ var trailDiv = document.querySelector("#trail-div");
 // get name of destination city and state
 var getCityName = function (event) {
   event.preventDefault();
-  var cityName = inputCityEl.value;
+
+  // function capitalizeFirstLetter(string) {
+  //   return string.charAt(0).toUpperCase() + string.slice(1);
+  // }
+
+  cityName = inputCityEl.value;
+  capitalizeFirstLetter(cityName);
+
   var stateName = stateInputEl.value;
   console.log(cityName, stateName);
   getTrailData(cityName, stateName);
