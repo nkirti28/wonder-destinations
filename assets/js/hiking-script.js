@@ -4,6 +4,9 @@ var cityBtn = document.querySelector("#city-button");
 var stateInputEl = document.querySelector("#state");
 var trailDiv = document.querySelector("#trail-div");
 var modalEl = document.querySelector("#alert-modal");
+var searchDiv = document.querySelector("#search-div");
+var searchedCities = [];
+var cities = [];
 
 // get name of destination city and state
 var getCityName = function (event) {
@@ -17,8 +20,9 @@ var getCityName = function (event) {
   cityName = capitalizeFirstLetter(inputCityEl.value);
 
   var stateName = stateInputEl.value;
-  console.log(cityName, stateName);
   getTrailData(cityName, stateName);
+
+  // clear input elements
   inputCityEl.value = "";
   stateInputEl.value = "";
   trailDiv.innerHTML = "";
@@ -48,21 +52,75 @@ var getTrailData = function (cityName, stateName) {
         console.log(trails);
 
         trails.forEach(function (trail) {
-          if (trail.city === cityName && trail.state === stateName) {
-            // console.log(trail.city, trail.state);
-            var name = trail.name;
-            var activities = trail.activities;
-            var dir = trail.directions;
+          // if (trail.city === cityName && trail.state === stateName) {
+          //   console.log(trail.city, trail.state);
+          var name = trail.name;
+          var activities = trail.activities;
+          var dir = trail.directions;
 
-            displayTrailinfo(name, activities, dir);
-          } else {
-            modalAlert();
-          }
+          displayTrailinfo(name, activities, dir);
+          // }
+          // } else {
+          //   console.log("one");
+          //   // modalAlert();
+          //   return;
+          // }
         });
+
+        // check to see if cityName is already in localstorage
+        searchedCities.forEach(function (search) {
+          cities.push(search.city);
+        });
+
+        if (cities.includes(cityName)) {
+          return;
+        }
+
+        // create object to store search data
+        var search = {
+          city: cityName,
+          state: stateName,
+        };
+
+        searchedCities.push(search);
+        console.log(searchedCities);
+        saveSearch(searchedCities);
+        createBtns(searchedCities);
       });
     } else {
       modalAlert();
+      console.log("two");
+      return;
     }
+  });
+};
+
+// create button with searched destinations
+var createBtns = function (searchedCities) {
+  searchDiv.innerHTML = "";
+
+  var searchHeader = document.createElement("h3");
+  searchHeader.textContent = "Recent Searches:";
+  searchHeader.classList = "title has-text-warning";
+  searchDiv.appendChild(searchHeader);
+
+  var cityDiv = document.createElement("div");
+  cityDiv.classList = "columns";
+  searchDiv.appendChild(cityDiv);
+
+  searchedCities.forEach(function (search) {
+    var city = search.city;
+    var state = search.state;
+    var btnDiv = document.createElement("div");
+    btnDiv.classList = "column is-one-fifth";
+    console.log(city, state);
+
+    var citybtn = document.createElement("button");
+    citybtn.textContent = city + " " + state;
+    citybtn.classList = "button is-dark is-fullwidth";
+
+    cityDiv.appendChild(btnDiv);
+    btnDiv.appendChild(citybtn);
   });
 };
 
@@ -148,6 +206,25 @@ var modalAlert = function () {
 var closeModal = function (event) {
   modalEl.classList.remove("is-active");
 };
+
+var saveSearch = function (searchedCities) {
+  localStorage.setItem("search", JSON.stringify(searchedCities));
+};
+
+var loadStorage = function () {
+  searchedCities = JSON.parse(localStorage.getItem("search"));
+
+  if (!searchedCities) {
+    searchedCities = [];
+    console.log("none");
+    return;
+  }
+
+  createBtns(searchedCities);
+  console.log(searchedCities);
+};
+
+loadStorage();
 
 cityBtn.addEventListener("click", getCityName);
 modalEl.addEventListener("click", closeModal);
