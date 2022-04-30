@@ -98,6 +98,7 @@ var getTrailData = function (cityName, stateName) {
 // create button with searched destinations
 var createBtns = function (searchedCities) {
   searchDiv.innerHTML = "";
+  searchDiv.classList.add("has-background-grey-light");
 
   var searchHeader = document.createElement("h3");
   searchHeader.textContent = "Recent Searches:";
@@ -105,7 +106,7 @@ var createBtns = function (searchedCities) {
   searchDiv.appendChild(searchHeader);
 
   var cityDiv = document.createElement("div");
-  cityDiv.classList = "columns";
+  cityDiv.classList = "columns is-flex-wrap-wrap";
   searchDiv.appendChild(cityDiv);
 
   searchedCities.forEach(function (search) {
