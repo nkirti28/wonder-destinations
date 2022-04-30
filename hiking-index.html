@@ -9,34 +9,64 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
     <link rel="stylesheet" href="./assets/css/hiking-style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Wonder Trails</title>
   </head>
 
   <body>
     <nav
-      class="has-background-primary p-2 mb-0 columns is-flex is-justify-content-space-between"
+      class="navbar is-fixed-top is-dark"
+      role="navigation"
+      aria-label="main navigation"
     >
-      <h1 class="column is-one-fifth">Wonder Trails</h1>
+      <div class="navbar-brand">
+        <h1>
+          <a href="#">
+            <img src="assets/images/favicon.ico" />
+            Wonder Destinations
+          </a>
+        </h1>
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
 
-      <div
-        id="links"
-        class="column is-two-fifths is-flex is-justify-content-space-around"
-      >
-        <a href="">Homepage</a>
-        <a href="">Events</a>
-        <a href="">Contact Us</a>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item"> Home </a>
+          <a class="navbar-item"> Destinations </a>
+          <a class="navbar-item"> Activities </a>
+          <a class="navbar-item"> Events </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> More </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item"> About Us </a>
+              <a class="navbar-item"> Contact Us </a>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
-    <section class="hero is-medium jumbo" id="jumbotron">
-      <h2 class="title has-text-light has-background-grey-light p-3 form">
-        Find Fun Outdoor Activities Near Your Destination
-      </h2>
-
+    -->
+    <div class="hero is-medium jumbo" id="jumbotron">
       <div class="hero-body">
         <div
           id="city-form"
           class="field box column is-one-third has-background-grey-light form"
         >
+          <h2 class="title has-text-light has-background-grey-light p-3 form">
+            Find Fun Outdoor Activities
+          </h2>
           <label for="city-name" class="label has-text-light"
             >Please Enter City Name:</label
           >
@@ -118,8 +148,8 @@
           </div>
         </div>
       </div>
-    </section>
-    <div class="container" id="trail-div"></div>
+    </div>
+    <div class="container mt-5" id="trail-div"></div>
     <script src="./assets/js/hiking-script.js"></script>
   </body>
 </html>

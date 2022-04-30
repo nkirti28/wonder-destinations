@@ -8,12 +8,12 @@ var trailDiv = document.querySelector("#trail-div");
 var getCityName = function (event) {
   event.preventDefault();
 
-  // function capitalizeFirstLetter(string) {
-  //   return string.charAt(0).toUpperCase() + string.slice(1);
-  // }
+  // make sure 1st letter of city is uppercase
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
-  cityName = inputCityEl.value;
-  capitalizeFirstLetter(cityName);
+  cityName = capitalizeFirstLetter(inputCityEl.value);
 
   var stateName = stateInputEl.value;
   console.log(cityName, stateName);
@@ -43,11 +43,12 @@ var getTrailData = function (cityName, stateName) {
 
         trails.forEach(function (trail) {
           if (trail.city === cityName && trail.state === stateName) {
-            console.log(trail.city, trail.state);
+            // console.log(trail.city, trail.state);
             var name = trail.name;
             var activities = trail.activities;
+            var dir = trail.directions;
 
-            displayTrailinfo(name, activities);
+            displayTrailinfo(name, activities, dir);
           }
         });
       });
@@ -57,15 +58,77 @@ var getTrailData = function (cityName, stateName) {
 };
 
 // Function to display results on screen
-var displayTrailinfo = function (trail, activities) {
+var displayTrailinfo = function (trail, activities, dir) {
+  var trailCard = document.createElement("div");
+  trailCard.classList = "trail-card box";
   var trailHeader = document.createElement("h4");
+  trailHeader.classList = "title is-4";
   trailHeader.textContent = trail + ":";
 
+  var dirHeader = document.createElement("h5");
+  dirHeader.textContent = "Directions:";
+  dirHeader.classList = "title is-6 mb-2";
+  var trailDir = document.createElement("p");
+  trailDir.classList = "mb-4";
+  trailDir.textContent = dir;
+
+  trailDiv.appendChild(trailCard);
+  trailCard.append(trailHeader, dirHeader, trailDir);
+
   var hiking = activities.hiking;
+
+  if (hiking) {
+    var hikingHeader = document.createElement("h5");
+    hikingHeader.textContent = "Hiking:";
+    hikingHeader.classList = "title is-6 mb-2";
+
+    var hikingInfo = document.createElement("p");
+    hikingInfo.textContent = "Trail Descripton: " + hiking.description;
+    hikingInfo.classList = "mb-3";
+    trailCard.append(hikingHeader, hikingInfo);
+  } else {
+    var noHiking = document.createElement("h5");
+    noHiking.textContent = "No Hiking Available Here";
+    noHiking.classList = "title is-6 mb-3";
+    trailCard.appendChild(noHiking);
+  }
+
   var biking = activities["mountain biking"];
+  if (biking) {
+    var bikingHeader = document.createElement("h5");
+    bikingHeader.textContent = "Mountain Biking:";
+    bikingHeader.classList = "title is-6 mb-2";
+
+    var bikingInfo = document.createElement("p");
+    bikingInfo.textContent = "Trail Descripton:" + biking.description;
+    bikingInfo.classList = "mb-3";
+    var bikingUrl = document.createElement("a");
+    bikingUrl.textContent = "Click Here For More Info";
+    bikingUrl.setAttribute("href", biking.url);
+    bikingUrl.setAttribute("target", "_blank");
+    bikingUrl.classList = "mb-3";
+
+    trailCard.append(bikingHeader, bikingInfo, bikingUrl);
+  } else {
+    var noBiking = document.createElement("h5");
+    noBiking.textContent = "No Mountain Biking Available Here";
+    noBiking.classList = "title is-6 mb-3";
+    trailCard.appendChild(noBiking);
+  }
+
   var camping = activities.camping;
-  console.log(trail, hiking, biking, camping);
-  trailDiv.appendChild(trailHeader);
+  if (camping) {
+    var campingHeader = document.createElement("h5");
+    campingHeader.textContent = "Camping:";
+    campingHeader.classList = "title is-6 mb-2";
+
+    var campingInfo = document.createElement("p");
+    campingInfo.textContent = camping.description;
+
+    trailCard.append(campingHeader, campingInfo);
+  }
+
+  // console.log(trail, hiking, biking, camping);
 };
 
 cityBtn.addEventListener("click", getCityName);
