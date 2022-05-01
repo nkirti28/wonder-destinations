@@ -1,0 +1,51 @@
+/*Apply styles to <header>*/
+
+/* declarations of CSS- vairables*/
+:root {
+  --primary-color: #c9af08;
+  --secondary-color: #024e76;
+  --tertiary-color: #39a6b2;
+}
+/*universal selector - catch all selectors*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*Apply styles to <header>*/
+nav {
+  padding: 10px 10px;
+}
+
+/* Hero Style Start */
+
+.hero_main {
+  background-image: url("../images/an1.jpg");
+  background-size: cover;
+  background-position: 80%;
+}
+.hero-cta {
+  width: 60%;
+  text-align: left;
+  margin: 3.5%;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.3;
+}
+.hero-cta h2 {
+  font-style: italic;
+  font-size: 35px;
+  color: #fce138;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+/* Hero Style End */
+/* destination.html style starts*/
+.destinations {
+  padding: 20px 20px;
+}
+.img_dest {
+  background-image: url("../images/destinations/aerialView.jpg");
+  background-size: cover;
+  background-position: 60%;
+}

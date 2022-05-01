@@ -1,0 +1,12 @@
+.jumbo {
+  background-image: url(../images/bike_hero.jpg);
+  background-size: cover;
+}
+
+.form {
+  opacity: 0.95;
+}
+
+.trail-card {
+  border: 1px solid black;
+}

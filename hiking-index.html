@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/hiking-style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Wonder Trails</title>
+  </head>
+
+  <body>
+    <!-- Header-->
+    <nav
+      class="navbar is-fixed-top is-dark"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <div>
+          <a href="#">
+            <img
+              src="./assets/images/Wonder Destinations.png"
+              width="200"
+              height=""
+          /></a>
+        </div>
+        <a
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item" href="index.html"> Home </a>
+          <a class="navbar-item" href="destinations.html" target="_self">
+            Destinations
+          </a>
+          <a class="navbar-item" href="hiking-index.html" target="_self">
+            Activities
+          </a>
+          <a class="navbar-item" href="#"> Events </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> More </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item"> About Us </a>
+              <a class="navbar-item"> Contact Us </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!--end of header-->
+    <div class="hero is-medium jumbo" id="jumbotron">
+      <div class="hero-body">
+        <div
+          id="city-form"
+          class="field box column is-one-third has-background-grey-light form"
+        >
+          <h2 class="title has-background-grey-light has-text-warning p-3 form">
+            Find Fun Outdoor Activities
+          </h2>
+          <label for="city-name" class="label">Please Enter City Name:</label>
+          <div class="control mb-2">
+            <input
+              type="text"
+              class="input"
+              id="city-name"
+              type="text"
+              placeholder="City Name"
+            />
+          </div>
+          <div class="field">
+            <label for="state" class="label">State:</label>
+            <div class="control">
+              <div class="select">
+                <select name="state" id="state">
+                  Select State
+                  <option value="" selected="selected">Select a State</option>
+                  <option value="Alabama">Alabama</option>
+                  <option value="Alaska">Alaska</option>
+                  <option value="Arizona">Arizona</option>
+                  <option value="Arkansas">Arkansas</option>
+                  <option value="California">California</option>
+                  <option value="Colorado">Colorado</option>
+                  <option value="Connecticut">Connecticut</option>
+                  <option value="Delaware">Delaware</option>
+                  <option value="District of columbia">
+                    District Of Columbia
+                  </option>
+                  <option value="Florida">Florida</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Hawaii">Hawaii</option>
+                  <option value="Idaho">Idaho</option>
+                  <option value="Illinois">Illinois</option>
+                  <option value="Indiana">Indiana</option>
+                  <option value="Iowa">Iowa</option>
+                  <option value="Kansas">Kansas</option>
+                  <option value="Kentucky">Kentucky</option>
+                  <option value="Louisiana">Louisiana</option>
+                  <option value="Maine">Maine</option>
+                  <option value="Maine">Maryland</option>
+                  <option value="Massachusetts">Massachusetts</option>
+                  <option value="Michigan">Michigan</option>
+                  <option value="Minnesota">Minnesota</option>
+                  <option value="Mississippi">Mississippi</option>
+                  <option value="Missouri">Missouri</option>
+                  <option value="Montana">Montana</option>
+                  <option value="Nebraska">Nebraska</option>
+                  <option value="Nevada">Nevada</option>
+                  <option value="New Hampshire">New Hampshire</option>
+                  <option value="New Jersey">New Jersey</option>
+                  <option value="New Mexico">New Mexico</option>
+                  <option value="New York">New York</option>
+                  <option value="North Carolina">North Carolina</option>
+                  <option value="North Dakota">North Dakota</option>
+                  <option value="Ohio">Ohio</option>
+                  <option value="Oklahoma">Oklahoma</option>
+                  <option value="Oregon">Oregon</option>
+                  <option value="Pennsylvania">Pennsylvania</option>
+                  <option value="Rhode Island">Rhode Island</option>
+                  <option value="South Carolina">South Carolina</option>
+                  <option value="South Dakota">South Dakota</option>
+                  <option value="Tennessee">Tennessee</option>
+                  <option value="Texas">Texas</option>
+                  <option value="Utah">Utah</option>
+                  <option value="Vermont">Vermont</option>
+                  <option value="Virginia">Virginia</option>
+                  <option value="Washington">Washington</option>
+                  <option value="West Virginia">West Virginia</option>
+                  <option value="Wisconsin">Wisconsin</option>
+                  <option value="Wyoming">Wyoming</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="control">
+            <button id="city-button" class="button is-dark">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- div to contain trail cards -->
+    <div class="container mt-5 mb-5" id="trail-div"></div>
+    <!-- div to contain search history -->
+    <div class="container mt-5 mb-5" id="search-div"></div>
+    <!-- footer -->
+    <footer class="footer has-background-dark">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-4 has-text-white">
+            <h3 class="bd-footer-title">
+              <strong class="has-text-info-light">Wonder Destinations</strong>
+            </h3>
+            by @WD Company
+            <div class="bd-footer-tsp">
+              <p>
+                The source code is licensed KU. The website content is licensed
+                by company @2022
+              </p>
+            </div>
+          </div>
+          <div class="column is-8">
+            <h3 class="bd-footer-title">
+              <strong class="has-text-info-light">Share on</strong>
+            </h3>
+            <br />
+            <div class="bd-footer-icon">
+              <a href="facebook.com" target="_blank">
+                <span class="icon has-text-info-light">
+                  <i class="fab fa-lg fa-facebook"></i> </span
+              ></a>
+              <a href="twitter.com" target="_blank">
+                <span class="icon has-text-info-light">
+                  <i class="fab fa-lg fa-twitter"></i> </span
+              ></a>
+              <a href="github.com" target="_blank">
+                <span class="icon has-text-info-light">
+                  <i class="fab fa-lg fa-github"></i> </span
+              ></a>
+              <a href="pinterest.com" target="_blank">
+                <span class="icon has-text-info-light">
+                  <i class="fab fa-lg fa-pinterest"></i> </span
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- modal -->
+    <div id="alert-modal" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        <div class="box">
+          <h2 class="title">Alert</h2>
+          <p>
+            Sorry! We're not finding any data for that city and state! Please
+            try again!
+          </p>
+        </div>
+      </div>
+
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+    <script src="./assets/js/hiking-script.js"></script>
+  </body>
+</html>
