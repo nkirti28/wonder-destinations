@@ -99,6 +99,7 @@ var getTrailData = function (cityName, stateName) {
 var createBtns = function (searchedCities) {
   searchDiv.innerHTML = "";
   searchDiv.classList.add("has-background-grey-light");
+  searchDiv.classList.add("box");
 
   var searchHeader = document.createElement("h3");
   searchHeader.textContent = "Recent Searches:";
