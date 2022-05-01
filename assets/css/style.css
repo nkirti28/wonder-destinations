@@ -12,11 +12,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  /*color lightblue/teal to whole body font*/
-  color: --tertiary-color;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 /*Apply styles to <header>*/
 nav {

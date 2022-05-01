@@ -88,7 +88,7 @@
             class="input"
             id="search"
             type="search"
-            placeholder="Search destinations"
+            placeholder="Search destinations in the United States"
           />
         </div>
         <div class="control">
@@ -98,19 +98,29 @@
         </div>
       </div>
     </section>
-   
-    <!-- Destination Info-->
-    <section class="container box">
-      <div class="columns">
-        <div class="column is-4">
-          <div class="content">
-            <p class="subtitle" id="Country">United States</p>
-            <p class="title" id="destination"></p>
+
+    <!-- Destination Info from API-->
+    <section class="container is-fullhd box">
+      <div class="columns px-3">
+        <!--column 1 - Destination name , country and geo info -->
+        <div class="column is-4" id="placeInfo">
+          <div class="content is-normal">
+            <p class="subtitle" id="country">United States</p>
+            <p class="subtitle" id="destination"><strong></strong></p>
             <p id="destinationInfo"></p>
           </div>
         </div>
+        <!--column 2 - Destination current temp ,timezone -->
+        <div class="column is-3 mt-6 py-6" id="placeWeather">
+          <div id="current-weather"></div>
+        </div>
+        <!--column 3 - Destination map -->
+        <div class="column is-3 mt-6" id="placeWeather">
+          <div id="current-weather"></div>
+        </div>
       </div>
     </section>
+
     <!-- Footer -->
     <footer class="footer has-background-dark">
       <div class="container">
@@ -133,19 +143,19 @@
             </h3>
             <br />
             <div class="bd-footer-icon">
-              <a href="facebook.com" target="_blank">
+              <a href="https://www.facebook.com/" target="_blank">
                 <span class="icon has-text-info-light">
                   <i class="fab fa-lg fa-facebook"></i> </span
               ></a>
-              <a href="twitter.com" target="_blank">
+              <a href="https://twitter.com/" target="_blank">
                 <span class="icon has-text-info-light">
                   <i class="fab fa-lg fa-twitter"></i> </span
               ></a>
-              <a href="github.com" target="_blank">
+              <a href="https://github.com/" target="_blank">
                 <span class="icon has-text-info-light">
                   <i class="fab fa-lg fa-github"></i> </span
               ></a>
-              <a href="pinterest.com" target="_blank">
+              <a href="https://www.pinterest.com/" target="_blank">
                 <span class="icon has-text-info-light">
                   <i class="fab fa-lg fa-pinterest"></i> </span
               ></a>
