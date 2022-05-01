@@ -17,7 +17,7 @@ var getCityName = function (event) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  cityName = capitalizeFirstLetter(inputCityEl.value);
+  var cityName = capitalizeFirstLetter(inputCityEl.value);
 
   var stateName = stateInputEl.value;
   getTrailData(cityName, stateName);
@@ -52,19 +52,11 @@ var getTrailData = function (cityName, stateName) {
         console.log(trails);
 
         trails.forEach(function (trail) {
-          // if (trail.city === cityName && trail.state === stateName) {
-          //   console.log(trail.city, trail.state);
           var name = trail.name;
           var activities = trail.activities;
           var dir = trail.directions;
 
           displayTrailinfo(name, activities, dir);
-          // }
-          // } else {
-          //   console.log("one");
-          //   // modalAlert();
-          //   return;
-          // }
         });
 
         // check to see if cityName is already in localstorage
@@ -110,20 +102,28 @@ var createBtns = function (searchedCities) {
   cityDiv.classList = "columns is-flex-wrap-wrap";
   searchDiv.appendChild(cityDiv);
 
-  searchedCities.forEach(function (search) {
-    var city = search.city;
-    var state = search.state;
+  searchedCities.forEach(function ({ city, state }) {
     var btnDiv = document.createElement("div");
     btnDiv.classList = "column is-one-fifth";
-    console.log(city, state);
+    // console.log(city, state);
 
-    var citybtn = document.createElement("button");
-    citybtn.textContent = city + " " + state;
-    citybtn.classList = "button is-dark is-fullwidth";
+    var historyBtn = document.createElement("button");
+    historyBtn.textContent = city + " " + state;
+    historyBtn.classList = "button is-dark is-fullwidth";
 
     cityDiv.appendChild(btnDiv);
-    btnDiv.appendChild(citybtn);
+    btnDiv.appendChild(historyBtn);
+    // var cityState = historyBtn.textContent;
+
+    historyBtn.addEventListener("click", getBtnValue);
+    // get button value to return to input
   });
+};
+var getBtnValue = function (event) {
+  console.log(event.target.textContent);
+  var [city, state] = event.target.textContent.split(" ");
+
+  getTrailData(city, state);
 };
 
 // Function to display results on screen
@@ -140,7 +140,7 @@ var displayTrailinfo = function (trail, activities, dir) {
   dirHeader.classList = "title is-6 mb-2";
   var trailDir = document.createElement("p");
   trailDir.classList = "mb-4";
-  trailDir.textContent = dir;
+  trailDir.innerHTML = dir;
 
   trailDiv.appendChild(trailCard);
   trailCard.append(trailHeader, dirHeader, trailDir);
@@ -153,7 +153,7 @@ var displayTrailinfo = function (trail, activities, dir) {
     hikingHeader.classList = "title is-6 mb-2";
 
     var hikingInfo = document.createElement("p");
-    hikingInfo.textContent = "Trail Descripton: " + hiking.description;
+    hikingInfo.innerHTML = "Trail Descripton: " + hiking.description;
     hikingInfo.classList = "mb-3";
     trailCard.append(hikingHeader, hikingInfo);
   } else {
@@ -170,7 +170,7 @@ var displayTrailinfo = function (trail, activities, dir) {
     bikingHeader.classList = "title is-6 mb-2";
 
     var bikingInfo = document.createElement("p");
-    bikingInfo.textContent = "Trail Descripton:" + biking.description;
+    bikingInfo.innerHTML = "Trail Descripton:" + biking.description;
     bikingInfo.classList = "mb-3";
     var bikingUrl = document.createElement("a");
     bikingUrl.textContent = "Click Here For More Info";
