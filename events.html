@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/events.css" />
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <title>Events | Wonder Destinations</title>
+  </head>
+  <body>
+    <!-- <nav
+      class="navbar is-fixed-top is-dark"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <h1>
+          <a href="#">
+            <img src="assets/images/favicon.ico" />
+            Wonder Destinations
+          </a>
+        </h1>
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item"> Home </a>
+          <a class="navbar-item"> Destinations </a>
+          <a class="navbar-item"> Activities </a>
+          <a class="navbar-item"> Events </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> More </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item"> About Us </a>
+              <a class="navbar-item"> Contact Us </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav> -->
+    <main class="container">
+      <article id="events-hero" class="hero">
+        <section class="container p-3">
+          <h1 class="title has-text-centered has-text-white">Events</h1>
+          <form id="events-form">
+            <div class="field">
+              <label for="city-input" class="label has-text-white"
+                >Search By City</label
+              >
+              <div class="field has-addons">
+                <div class="control">
+                  <input
+                    id="city-input"
+                    type="text"
+                    placeholder="Kansas City"
+                    class="input"
+                  />
+                </div>
+                <div class="control">
+                  <button
+                    type="submit"
+                    class="button has-background-black has-text-white"
+                    id="search-by-city-btn"
+                  >
+                    Find Events
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button
+                  type="button"
+                  class="button has-text-white has-background-link"
+                >
+                  Find Events Near Me
+                </button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </article>
+      <!-- Recommended Events -->
+      <article id="recommended-events" class="p-4">
+        <p class="title">Recommended</p>
+      </article>
+      <article id="search-results" class="p-4 is-hidden"></article>
+      <article id="near-me" class="p-4 is-hidden">
+        <p class="title">Events Near Me</p>
+      </article>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./assets/js/events.js"></script>
+  </body>
+</html>
