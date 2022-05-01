@@ -88,7 +88,7 @@
             class="input"
             id="search"
             type="search"
-            placeholder="Search destinations"
+            placeholder="Search destinations in the United States"
           />
         </div>
         <div class="control">
@@ -101,17 +101,21 @@
 
     <!-- Destination Info from API-->
     <section class="container is-fullhd box">
-      <div class="columns">
+      <div class="columns px-3">
         <!--column 1 - Destination name , country and geo info -->
         <div class="column is-4" id="placeInfo">
           <div class="content is-normal">
             <p class="subtitle" id="country">United States</p>
-            <p class="title" id="destination"></p>
+            <p class="subtitle" id="destination"><strong></strong></p>
             <p id="destinationInfo"></p>
           </div>
         </div>
         <!--column 2 - Destination current temp ,timezone -->
-        <div class="column is-3" id="placeWeather">
+        <div class="column is-3 mt-6 py-6" id="placeWeather">
+          <div id="current-weather"></div>
+        </div>
+        <!--column 3 - Destination map -->
+        <div class="column is-3 mt-6" id="placeWeather">
           <div id="current-weather"></div>
         </div>
       </div>
