@@ -25,11 +25,11 @@ var getCityName = function (event) {
   // clear input elements
   inputCityEl.value = "";
   stateInputEl.value = "";
-  trailDiv.innerHTML = "";
 };
 
 // pass city and state name to api to get trail data
 var getTrailData = function (cityName, stateName) {
+  trailDiv.innerHTML = "";
   const options = {
     method: "GET",
     headers: {
