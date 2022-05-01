@@ -23,20 +23,22 @@
   </head>
 
   <body>
+    <!-- Header-->
     <nav
       class="navbar is-fixed-top is-dark"
       role="navigation"
       aria-label="main navigation"
     >
       <div class="navbar-brand">
-        <h1>
+        <div>
           <a href="#">
-            <img src="assets/images/favicon.ico" />
-            Wonder Destinations
-          </a>
-        </h1>
+            <img
+              src="./assets/images/Wonder Destinations.png"
+              width="200"
+              height=""
+          /></a>
+        </div>
         <a
-          role="button"
           class="navbar-burger"
           aria-label="menu"
           aria-expanded="false"
@@ -50,10 +52,14 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
-          <a href="index.html" class="navbar-item"> Home </a>
-          <a href="destinations.html" class="navbar-item"> Destinations </a>
-          <a href="hiking-index.html" class="navbar-item"> Activities </a>
-          <a href="events.html" class="navbar-item"> Events </a>
+          <a class="navbar-item" href="index.html"> Home </a>
+          <a class="navbar-item" href="destinations.html" target="_self">
+            Destinations
+          </a>
+          <a class="navbar-item" href="hiking-index.html" target="_self">
+            Activities
+          </a>
+          <a class="navbar-item" href="#"> Events </a>
 
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"> More </a>
@@ -66,7 +72,7 @@
         </div>
       </div>
     </nav>
-    -->
+    <!--end of header-->
     <div class="hero is-medium jumbo" id="jumbotron">
       <div class="hero-body">
         <div
