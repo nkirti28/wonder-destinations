@@ -5,23 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/events.css" />
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
     <title>Events | Wonder Destinations</title>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <style>
-      .hero {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1)),
-          url("images/events-hero-banner.jpg");
-        background-position: center;
-      }
-    </style>
   </head>
   <body>
-    <nav
+    <!-- <nav
       class="navbar is-fixed-top is-dark"
       role="navigation"
       aria-label="main navigation"
@@ -63,6 +56,59 @@
           </div>
         </div>
       </div>
-    </nav>
+    </nav> -->
+    <main class="container">
+      <article id="events-hero" class="hero">
+        <section class="container p-3">
+          <h1 class="title has-text-centered has-text-white">Events</h1>
+          <form id="events-form">
+            <div class="field">
+              <label for="city-input" class="label has-text-white"
+                >Search By City</label
+              >
+              <div class="field has-addons">
+                <div class="control">
+                  <input
+                    id="city-input"
+                    type="text"
+                    placeholder="Kansas City"
+                    class="input"
+                  />
+                </div>
+                <div class="control">
+                  <button
+                    type="submit"
+                    class="button has-background-black has-text-white"
+                    id="search-by-city-btn"
+                  >
+                    Find Events
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button
+                  type="button"
+                  class="button has-text-white has-background-link"
+                >
+                  Find Events Near Me
+                </button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </article>
+      <!-- Recommended Events -->
+      <article id="recommended-events" class="p-4">
+        <p class="title">Recommended</p>
+      </article>
+      <article id="search-results" class="p-4 is-hidden"></article>
+      <article id="near-me" class="p-4 is-hidden">
+        <p class="title">Events Near Me</p>
+      </article>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./assets/js/events.js"></script>
   </body>
 </html>
