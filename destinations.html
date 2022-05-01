@@ -12,10 +12,6 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
 
@@ -84,6 +80,37 @@
         </div>
       </div>
     </section>
+    <!--section search destinations-->
+    <section class="container destinations">
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input
+            class="input"
+            id="search"
+            type="search"
+            placeholder="Search destinations"
+          />
+        </div>
+        <div class="control">
+          <a class="button is-dark" id="searchBtn"
+            ><i class="fas fa-search"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+   
+    <!-- Destination Info-->
+    <section class="container box">
+      <div class="columns">
+        <div class="column is-4">
+          <div class="content">
+            <p class="subtitle" id="Country">United States</p>
+            <p class="title" id="destination"></p>
+            <p id="destinationInfo"></p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Footer -->
     <footer class="footer has-background-dark">
       <div class="container">
@@ -132,14 +159,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- add the js file here -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
-    <script>
-      bulmaCarousel.attach("#carousel-demo", {
-        slidesToScroll: 1,
-        slidesToShow: 4,
-      });
-    </script>
   </body>
 </html>
