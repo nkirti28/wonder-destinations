@@ -99,7 +99,7 @@ var createBtns = function (searchedCities) {
   searchDiv.appendChild(searchHeader);
 
   var cityDiv = document.createElement("div");
-  cityDiv.classList = "columns is-flex-wrap-wrap";
+  cityDiv.classList = "columns is-flex-wrap-wrap is-centered";
   searchDiv.appendChild(cityDiv);
 
   searchedCities.forEach(function ({ city, state }) {
@@ -116,9 +116,24 @@ var createBtns = function (searchedCities) {
     // var cityState = historyBtn.textContent;
 
     historyBtn.addEventListener("click", getBtnValue);
-    // get button value to return to input
   });
+  var clearDiv = document.createElement("div");
+  clearDiv.classList = "column is-full is-flex is-justify-content-center";
+  var clearBtn = document.createElement("button");
+  clearBtn.classList = "button is-dark";
+  clearBtn.textContent = "Clear History";
+
+  cityDiv.appendChild(clearDiv);
+  clearDiv.appendChild(clearBtn);
+  clearBtn.addEventListener("click", clearHistory);
 };
+
+var clearHistory = function () {
+  searchDiv.innerHTML = "";
+  searchDiv.classList.remove("has-background-grey-light", "box");
+  localStorage.clear();
+};
+// get button value to return to input
 var getBtnValue = function (event) {
   console.log(event.target.textContent);
   var [city, state] = event.target.textContent.split(" ");
