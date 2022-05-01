@@ -14,20 +14,21 @@
     <title>Events | Wonder Destinations</title>
   </head>
   <body>
-    <!-- <nav
+    <nav
       class="navbar is-fixed-top is-dark"
       role="navigation"
       aria-label="main navigation"
     >
       <div class="navbar-brand">
-        <h1>
+        <div>
           <a href="#">
-            <img src="assets/images/favicon.ico" />
-            Wonder Destinations
-          </a>
-        </h1>
+            <img
+              src="./assets/images/Wonder Destinations.png"
+              width="200"
+              height=""
+          /></a>
+        </div>
         <a
-          role="button"
           class="navbar-burger"
           aria-label="menu"
           aria-expanded="false"
@@ -41,10 +42,14 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
-          <a class="navbar-item"> Home </a>
-          <a class="navbar-item"> Destinations </a>
-          <a class="navbar-item"> Activities </a>
-          <a class="navbar-item"> Events </a>
+          <a class="navbar-item" href="index.html"> Home </a>
+          <a class="navbar-item" href="destinations.html" target="_self">
+            Destinations
+          </a>
+          <a class="navbar-item" href="hiking-index.html" target="_self">
+            Activities
+          </a>
+          <a class="navbar-item" href="#"> Events </a>
 
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"> More </a>
@@ -56,59 +61,93 @@
           </div>
         </div>
       </div>
-    </nav> -->
-    <main class="container">
-      <article id="events-hero" class="hero">
-        <section class="container p-3">
-          <h1 class="title has-text-centered has-text-white">Events</h1>
-          <form id="events-form">
-            <div class="field">
-              <label for="city-input" class="label has-text-white"
-                >Search By City</label
-              >
-              <div class="field has-addons">
-                <div class="control">
-                  <input
-                    id="city-input"
-                    type="text"
-                    placeholder="Kansas City"
-                    class="input"
-                  />
-                </div>
-                <div class="control">
-                  <button
-                    type="submit"
-                    class="button has-background-black has-text-white"
-                    id="search-by-city-btn"
-                  >
-                    Find Events
-                  </button>
-                </div>
+    </nav>
+    <article id="events-hero" class="hero">
+      <section class="container p-3">
+        <h1 class="title has-text-centered has-text-white">Events</h1>
+        <form id="events-form" class="py-6">
+          <div class="field my-6">
+            <label for="city-input" class="label has-text-white"
+              >Search By City</label
+            >
+            <div class="field has-addons">
+              <div class="control">
+                <input
+                  id="city-input"
+                  type="text"
+                  placeholder="Kansas City"
+                  class="input"
+                />
               </div>
-            </div>
-            <div class="field">
               <div class="control">
                 <button
-                  type="button"
-                  class="button has-text-white has-background-link"
+                  type="submit"
+                  class="button has-background-black has-text-white"
+                  id="search-by-city-btn"
                 >
-                  Find Events Near Me
+                  Find Events
                 </button>
               </div>
             </div>
-          </form>
-        </section>
-      </article>
+          </div>
+        </form>
+      </section>
+    </article>
+    <main class="container">
       <!-- Recommended Events -->
       <article id="recommended-events" class="p-4">
-        <p class="title">Recommended</p>
+        <p class="title is-size-4">Events Happening Near Me</p>
       </article>
       <article id="search-results" class="p-4 is-hidden"></article>
       <article id="near-me" class="p-4 is-hidden">
         <p class="title">Events Near Me</p>
       </article>
     </main>
+
+    <footer class="footer mt-6 has-background-dark">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-4 has-text-white">
+            <h3 class="bd-footer-title">
+              <strong class="has-text-info-light">Wonder Destinations</strong>
+            </h3>
+            by @WD Company
+            <div class="bd-footer-tsp">
+              <p>
+                The source code is licensed KU. The website content is licensed
+                by company @2022
+              </p>
+            </div>
+          </div>
+          <div class="column is-8">
+            <h3 class="bd-footer-title">
+              <strong class="has-text-info-light">Share on</strong>
+            </h3>
+            <br />
+            <div class="bd-footer-icon">
+              <a href="facebook.com" target="_blank">
+                <span class="icon has-text-info-light">
+                  <i class="fab fa-lg fa-facebook"></i> </span
+              ></a>
+              <a href="twitter.com" target="_blank">
+                <span class="icon has-text-info-light">
+                  <i class="fab fa-lg fa-twitter"></i> </span
+              ></a>
+              <a href="github.com" target="_blank">
+                <span class="icon has-text-info-light">
+                  <i class="fab fa-lg fa-github"></i> </span
+              ></a>
+              <a href="pinterest.com" target="_blank">
+                <span class="icon has-text-info-light">
+                  <i class="fab fa-lg fa-pinterest"></i> </span
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/events.js"></script>
   </body>
 </html>

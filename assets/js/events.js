@@ -8,20 +8,26 @@ var geoApiKey = "6beb1000c454436794b7f17b1bcae1f5";
 var geoApiUrl = "https://api.opencagedata.com/geocode/v1/json";
 
 // Display recommended event cards
-var renderRecommendedEventsCards = function (events) {
+var renderNearbyEvents = function (events) {
   var cardsParentEl = document.createElement("section");
   cardsParentEl.className = "is-flex is-flex-direction-column";
   events.forEach(function (event) {
+    // console.log(event);
+    var eventDate = new Date(event.datetime_local);
     var container = document.createElement("section");
-    container.className = "mb-3";
+    container.className = "box mb-3";
     var title = document.createElement("h2");
     var locationCityState = document.createElement("p");
     var locationVenue = document.createElement("p");
+    var dateEl = document.createElement("p");
     title.className = "title is-size-5";
-    title.textContent = event.event.short_title;
-    locationCityState.textContent = event.event.venue.display_location;
-    locationVenue.textContent = event.event.venue.name;
-    container.append(title, locationVenue, locationCityState);
+    title.textContent = event.short_title;
+    locationCityState.textContent = event.venue.display_location;
+    locationVenue.textContent = event.venue.name;
+    dateEl.textContent = `Happening On: ${
+      eventDate.getMonth() + 1
+    }/${eventDate.getDate()}/${eventDate.getFullYear()}`;
+    container.append(title, locationVenue, locationCityState, dateEl);
     cardsParentEl.append(container);
   });
   recommendedEventsEl.append(cardsParentEl);
@@ -29,19 +35,18 @@ var renderRecommendedEventsCards = function (events) {
 
 // Get recommended events on page load
 $("document").ready(function () {
-  fetch(
-    "https://api.seatgeek.com/2/recommendations?performers.id=35&postal_code=90001&client_id=" +
-      apiID
-  ).then(function (res) {
-    if (res.ok) {
-      res.json().then(function (data) {
-        // Send three recommendations to be rendered into cards
-        renderRecommendedEventsCards(data.recommendations.slice(0, 3));
-      });
-    } else {
-      console.log("something went wrong");
+  fetch("https://api.seatgeek.com/2/events?geoip=true&client_id=" + apiID).then(
+    function (res) {
+      if (res.ok) {
+        res.json().then(function (data) {
+          // Send three recommendations to be rendered into cards
+          renderNearbyEvents(data.events.slice(0, 3));
+        });
+      } else {
+        console.log("something went wrong");
+      }
     }
-  });
+  );
 });
 // renderRecommendedEventsCards(["test", "test2", "test3"]);
 
@@ -50,22 +55,34 @@ var renderEventsByCity = function (city, events) {
   searchResultsEl.innerHTML = "";
   var cardsParentEl = document.createElement("section");
   var sectionTitle = document.createElement("p");
-  sectionTitle.className = "title";
+  sectionTitle.className = "title is-size-4";
   sectionTitle.textContent = "Results For: " + city;
   cardsParentEl.className = "is-flex is-flex-direction-column";
   events.forEach(function (event) {
+    var eventDate = new Date(event.datetime_local);
     var container = document.createElement("section");
-    container.className = "box mb-3";
+    var textContainer = document.createElement("section");
+    textContainer.className = "ml-4";
+    container.className = "is-flex box mb-3";
+    var eventImage = document.createElement("img");
+    eventImage.setAttribute("src", event.performers[0].image);
+    eventImage.setAttribute("alt", event.performers[0].type);
     var title = document.createElement("h2");
     var locationCityState = document.createElement("p");
     var locationVenue = document.createElement("p");
+    var dateEl = document.createElement("p");
     title.className = "title is-size-5";
 
     title.textContent = event.short_title;
     locationCityState = event.venue.display_location;
     locationVenue.textContent = event.venue.name;
 
-    container.append(title, locationVenue, locationCityState);
+    dateEl.textContent = `Happening On: ${
+      eventDate.getMonth() + 1
+    }/${eventDate.getDate()}/${eventDate.getFullYear()}`;
+
+    textContainer.append(title, locationVenue, locationCityState, dateEl);
+    container.append(eventImage, textContainer);
     cardsParentEl.append(container);
   });
   searchResultsEl.append(sectionTitle, cardsParentEl);
@@ -99,7 +116,7 @@ eventsForm.addEventListener("submit", function (event) {
   var geoRequestUrl =
     geoApiUrl + "?q=" + cityName + "&key=" + geoApiKey + "&pretty=1";
   recommendedEventsEl.classList.add("is-hidden");
-  searchResultsEl.classList.toggle("is-hidden");
+  searchResultsEl.classList.remove("is-hidden");
   fetch(geoRequestUrl).then(function (res) {
     if (res.ok) {
       res.json().then(function (data) {
