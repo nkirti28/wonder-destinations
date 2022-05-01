@@ -23,30 +23,11 @@ nav {
   padding: 10px 10px;
 }
 
-nav h1 {
-  font-weight: bold;
-  font-size: 36px;
-  color: #fce138;
-  margin: 0;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-nav h1 a {
-  text-decoration: none;
-  color: #fce138;
-}
-nav h1 a:hover {
-  color: white;
-}
-
 /* Hero Style Start */
 
 .hero_main {
-  
   background-image: url("../images/an1.jpg");
   background-size: cover;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
   background-position: 80%;
 }
 .hero-cta {
@@ -64,3 +45,12 @@ nav h1 a:hover {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 /* Hero Style End */
+/* destination.html style starts*/
+.destinations {
+  padding: 20px 20px;
+}
+.img_dest {
+  background-image: url("../images/destinations/aerialView.jpg");
+  background-size: cover;
+  background-position: 60%;
+}
