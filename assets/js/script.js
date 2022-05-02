@@ -41,10 +41,12 @@ $(document).ready(function () {
   }
   function showData(response) {
     locationId = response.data[0].result_object.location_id;
+    let country = response.data[0].result_object.ancestors[1].name;
     let destinationStr = response.data[0].result_object.location_string;
     let destinationGeoInfo = response.data[0].result_object.geo_description;
     //console.log(locationId + "-" + destinationStr);
-    console.log(destinationGeoInfo);
+    //console.log(destinationGeoInfo);
+    $("#country").html(country);
     $("#destination").html(destinationStr);
     $("#destinationInfo").html(destinationGeoInfo);
   }
@@ -62,7 +64,7 @@ $(document).ready(function () {
       <p class='subtitle'> Today's weather (${currentMoment.format(
         "MM/DD/YYYY"
       )})</p>
-      <p class='title'><img class='image' src=https://openweathermap.org/img/wn/${
+      <p class='title'><img class='image has-centered' src=https://openweathermap.org/img/wn/${
         data.weather[0].icon
       }.png> ${Math.floor(data.main.temp)}&deg;F </p>
       <p><strong>Weather</strong>: ${data.weather[0].main}</p>
@@ -88,7 +90,7 @@ $(document).ready(function () {
 
     if (placeName.trim() != "") {
       console.log(placeName);
-      getPlacesData(placeName);
+      //getPlacesData(placeName);
       getCurrentWeatherData(placeName);
     }
   });
