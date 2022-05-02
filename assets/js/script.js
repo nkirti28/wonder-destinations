@@ -41,10 +41,12 @@ $(document).ready(function () {
   }
   function showData(response) {
     locationId = response.data[0].result_object.location_id;
+    let country = response.data[0].result_object.ancestors[1].name;
     let destinationStr = response.data[0].result_object.location_string;
     let destinationGeoInfo = response.data[0].result_object.geo_description;
     //console.log(locationId + "-" + destinationStr);
-    console.log(destinationGeoInfo);
+    //console.log(destinationGeoInfo);
+    $("#country").html(country);
     $("#destination").html(destinationStr);
     $("#destinationInfo").html(destinationGeoInfo);
   }
@@ -88,7 +90,7 @@ $(document).ready(function () {
 
     if (placeName.trim() != "") {
       console.log(placeName);
-      getPlacesData(placeName);
+      //getPlacesData(placeName);
       getCurrentWeatherData(placeName);
     }
   });

@@ -4,43 +4,80 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
     <link rel="stylesheet" href="./assets/css/hiking-style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Wonder Trails</title>
   </head>
 
   <body>
     <nav
-      class="has-background-primary p-2 mb-0 columns is-flex is-justify-content-space-between"
+      class="navbar is-fixed-top is-dark"
+      role="navigation"
+      aria-label="main navigation"
     >
-      <h1 class="column is-one-fifth">Wonder Trails</h1>
+      <div class="navbar-brand">
+        <h1>
+          <a href="#">
+            <img src="assets/images/favicon.ico" />
+            Wonder Destinations
+          </a>
+        </h1>
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
 
-      <div
-        id="links"
-        class="column is-two-fifths is-flex is-justify-content-space-around"
-      >
-        <a href="">Homepage</a>
-        <a href="">Events</a>
-        <a href="">Contact Us</a>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+          <a href="index.html" class="navbar-item"> Home </a>
+          <a href="destinations.html" class="navbar-item"> Destinations </a>
+          <a href="hiking-index.html" class="navbar-item"> Activities </a>
+          <a href="events.html" class="navbar-item"> Events </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> More </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item"> About Us </a>
+              <a class="navbar-item"> Contact Us </a>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
-    <section class="hero is-medium jumbo" id="jumbotron">
-      <h2 class="title has-text-light has-background-grey-light p-3 form">
-        Find Fun Outdoor Activities Near Your Destination
-      </h2>
-
+    -->
+    <div class="hero is-medium jumbo" id="jumbotron">
       <div class="hero-body">
         <div
           id="city-form"
           class="field box column is-one-third has-background-grey-light form"
         >
-          <label for="city-name" class="label has-text-light"
-            >Please Enter City Name:</label
-          >
-          <div class="control">
+          <h2 class="title has-background-grey-light has-text-warning p-3 form">
+            Find Fun Outdoor Activities
+          </h2>
+          <label for="city-name" class="label">Please Enter City Name:</label>
+          <div class="control mb-2">
             <input
               type="text"
               class="input"
@@ -50,7 +87,7 @@
             />
           </div>
           <div class="field">
-            <label for="state" class="label has-text-light">State:</label>
+            <label for="state" class="label">State:</label>
             <div class="control">
               <div class="select">
                 <select name="state" id="state">
@@ -118,8 +155,70 @@
           </div>
         </div>
       </div>
-    </section>
-    <div class="container" id="trail-div"></div>
+    </div>
+    <!-- div to contain trail cards -->
+    <div class="container mt-5 mb-5" id="trail-div"></div>
+    <!-- div to contain search history -->
+    <div class="container mt-5 mb-5" id="search-div"></div>
+    <!-- footer -->
+    <footer class="footer has-background-dark">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-4 has-text-white">
+            <h3 class="bd-footer-title">
+              <strong class="has-text-info-light">Wonder Destinations</strong>
+            </h3>
+            by @WD Company
+            <div class="bd-footer-tsp">
+              <p>
+                The source code is licensed KU. The website content is licensed
+                by company @2022
+              </p>
+            </div>
+          </div>
+          <div class="column is-8">
+            <h3 class="bd-footer-title">
+              <strong class="has-text-info-light">Share on</strong>
+            </h3>
+            <br />
+            <div class="bd-footer-icon">
+              <a href="facebook.com" target="_blank">
+                <span class="icon has-text-info-light">
+                  <i class="fab fa-lg fa-facebook"></i> </span
+              ></a>
+              <a href="twitter.com" target="_blank">
+                <span class="icon has-text-info-light">
+                  <i class="fab fa-lg fa-twitter"></i> </span
+              ></a>
+              <a href="github.com" target="_blank">
+                <span class="icon has-text-info-light">
+                  <i class="fab fa-lg fa-github"></i> </span
+              ></a>
+              <a href="pinterest.com" target="_blank">
+                <span class="icon has-text-info-light">
+                  <i class="fab fa-lg fa-pinterest"></i> </span
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- modal -->
+    <div id="alert-modal" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        <div class="box">
+          <h2 class="title">Alert</h2>
+          <p>
+            Sorry! We're not finding any data for that city and state! Please
+            try again!
+          </p>
+        </div>
+      </div>
+
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
     <script src="./assets/js/hiking-script.js"></script>
   </body>
 </html>
