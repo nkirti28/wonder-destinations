@@ -90,7 +90,7 @@ $(document).ready(function () {
 
     if (placeName.trim() != "") {
       console.log(placeName);
-      //getPlacesData(placeName);
+      getPlacesData(placeName);
       getCurrentWeatherData(placeName);
     }
   });
