@@ -61,7 +61,6 @@ var getTrailData = function (cityName, stateName) {
           var name = trail.name;
           var activities = trail.activities;
           var dir = trail.directions;
-
           if (trail.name) {
             displayTrailinfo(name, activities, dir);
           }
@@ -138,9 +137,12 @@ var createBtns = function (searchedCities) {
 
 var clearHistory = function () {
   searchDiv.innerHTML = "";
+  searchedCities = [];
+  cities = [];
   searchDiv.classList.remove("has-background-grey-light", "box");
   localStorage.clear();
 };
+
 // get button value to return to input
 var getBtnValue = function (event) {
   console.log(event.target.textContent);
