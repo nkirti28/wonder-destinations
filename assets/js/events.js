@@ -7,28 +7,80 @@ var apiID = "MjY3Mzk1NjZ8MTY1MTAxNzc0NS41MDA4MjU2";
 var geoApiKey = "6beb1000c454436794b7f17b1bcae1f5";
 var geoApiUrl = "https://api.opencagedata.com/geocode/v1/json";
 
+function createElement(elementType, args) {
+  var newElement = document.createElement(elementType);
+  if (args.elementClass) newElement.className = args.elementClass;
+  if (args.elementText) newElement.textContent = args.elementText;
+  if (args.elementAttributes) {
+    args.elementAttributes.forEach(function (attribute) {
+      newElement.setAttribute(attribute.type, attribute.value);
+    });
+  }
+  if (args.elementParent) args.elementParent.append(newElement);
+  return newElement;
+}
+
 // Display recommended event cards
 var renderNearbyEvents = function (events) {
-  var cardsParentEl = document.createElement("section");
-  cardsParentEl.className = "is-flex is-flex-direction-column";
+  var cardsParentEl = createElement("article", {
+    elementClass: "columns is-desktop",
+  });
   events.forEach(function (event) {
-    // console.log(event);
+    console.log(event);
     var eventDate = new Date(event.datetime_local);
-    var container = document.createElement("section");
-    container.className = "box mb-3";
-    var title = document.createElement("h2");
-    var locationCityState = document.createElement("p");
-    var locationVenue = document.createElement("p");
-    var dateEl = document.createElement("p");
-    title.className = "title is-size-5";
-    title.textContent = event.short_title;
-    locationCityState.textContent = event.venue.display_location;
-    locationVenue.textContent = event.venue.name;
-    dateEl.textContent = `Happening On: ${
-      eventDate.getMonth() + 1
-    }/${eventDate.getDate()}/${eventDate.getFullYear()}`;
-    container.append(title, locationVenue, locationCityState, dateEl);
-    cardsParentEl.append(container);
+    var cardContainer = createElement("section", {
+      elementClass: "box p-5 column my-3",
+      elementParent: cardsParentEl,
+    });
+    createElement("h2", {
+      elementClass: "title is-size-5 is-size-6-desktop",
+      elementText: event.short_title,
+      elementParent: cardContainer,
+    });
+    var flexContainer = createElement("div", {
+      elementClass: "columns",
+      elementParent: cardContainer,
+    });
+    var textContainer = createElement("div", {
+      elementClass: "column is-6-mobile",
+      elementParent: flexContainer,
+    });
+    var imageContainer = createElement("div", {
+      elementClass: "column is-6-mobile",
+      elementParent: flexContainer,
+    });
+    createElement("p", {
+      elementClass: "is-size-6-desktop",
+      elementText: `City: ${event.venue.display_location}`,
+      elementParent: textContainer,
+    });
+    createElement("p", {
+      elementClass: "is-size-6-desktop",
+      elementText: `Venue: ${event.venue.name}`,
+      elementParent: textContainer,
+    });
+    createElement("p", {
+      elementClass: "is-size-6-desktop my-3",
+      elementText: `Event Date: ${
+        eventDate.getMonth() + 1
+      }/${eventDate.getDate()}/${eventDate.getFullYear()}`,
+      elementParent: textContainer,
+    });
+    createElement("img", {
+      elementAttributes: [
+        { type: "src", value: event.performers[0].image },
+        { type: "alt", value: event.performers[0].short_name },
+      ],
+      elementParent: imageContainer,
+    });
+    createElement("a", {
+      elementText: "Buy Tickets",
+      elementAttributes: [
+        { type: "href", value: event.url },
+        { type: "target", value: "_blank" },
+      ],
+      elementParent: cardContainer,
+    });
   });
   recommendedEventsEl.append(cardsParentEl);
 };
@@ -128,4 +180,10 @@ eventsForm.addEventListener("submit", function (event) {
       });
     }
   });
+});
+
+$(".navbar-burger").click(function () {
+  // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+  $(".navbar-burger").toggleClass("is-active");
+  $(".navbar-menu").toggleClass("is-active");
 });
