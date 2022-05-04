@@ -6,7 +6,10 @@
 
 ## Site Preview
 
-> TO DO: Add screenshot images of the live site
+![home page](assets/images/home.png)
+![destinations](assets/images/destinations.png)
+![activities](assets/images/activities.png)
+![events](assets/images/events.png)
 
 ## User Story
 
