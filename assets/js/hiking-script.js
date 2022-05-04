@@ -30,6 +30,12 @@ var getCityName = function (event) {
 // pass city and state name to api to get trail data
 var getTrailData = function (cityName, stateName) {
   trailDiv.innerHTML = "";
+
+  if (stateName === "") {
+    modalAlert();
+    return;
+  }
+
   const options = {
     method: "GET",
     headers: {
@@ -55,8 +61,9 @@ var getTrailData = function (cityName, stateName) {
           var name = trail.name;
           var activities = trail.activities;
           var dir = trail.directions;
-
-          displayTrailinfo(name, activities, dir);
+          if (trail.name) {
+            displayTrailinfo(name, activities, dir);
+          }
         });
 
         // check to see if cityName is already in localstorage
@@ -130,9 +137,12 @@ var createBtns = function (searchedCities) {
 
 var clearHistory = function () {
   searchDiv.innerHTML = "";
+  searchedCities = [];
+  cities = [];
   searchDiv.classList.remove("has-background-grey-light", "box");
   localStorage.clear();
 };
+
 // get button value to return to input
 var getBtnValue = function (event) {
   console.log(event.target.textContent);
@@ -240,6 +250,12 @@ var loadStorage = function () {
   createBtns(searchedCities);
   console.log(searchedCities);
 };
+
+$(".navbar-burger").click(function () {
+  // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+  $(".navbar-burger").toggleClass("is-active");
+  $(".navbar-menu").toggleClass("is-active");
+});
 
 loadStorage();
 
