@@ -12,6 +12,10 @@
     />
     <link
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
 
@@ -101,7 +105,7 @@
 
     <!-- Destination Info from API-->
     <section class="container box">
-      <div class="columns px-3">
+      <div class="columns px-3 mt-6">
         <!--column 1 - Destination name , country and geo info (place information)-->
         <div class="column is-7" id="placeInfo">
           <div class="content is-normal ml-6">
@@ -116,7 +120,31 @@
         </div>
       </div>
     </section>
+    <!-- Destination photos and images -->
+    <section class="section">
+      <div class="container ml-6 px-6" id="carouselContent">
+        <!-- Start Carousel -->
+        <div id="carousel-demo" class="carousel box">
+          <div class="item-1 ml-6 px-3">
+            <img width="600" alt="First slide" id="Slide1" />
+          </div>
+          <div class="item-2 ml-6 px-3">
+            <img width="600" alt="Second slide" id="Slide2" />
+          </div>
+          <div class="item-3 ml-6 px-3">
+            <img width="600" alt="Third slide" id="Slide3" />
+          </div>
+          <div class="item-4 ml-6 px-3">
+            <img width="600" alt="Fourth slide" id="Slide4" />
+          </div>
+          <div class="item-5 ml-6 px-3">
+            <img width="600" alt="Fifth slide" id="Slide5" />
+          </div>
+        </div>
 
+        <!-- End Carousel -->
+      </div>
+    </section>
     <!-- Footer -->
     <footer class="footer has-background-dark">
       <div class="container">
@@ -165,7 +193,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- add the js file here -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
+
+    <script>
+      bulmaCarousel.attach("#carousel-demo", {
+        slidesToScroll: 1,
+        slidesToShow: 4,
+      });
+    </script>
   </body>
 </html>

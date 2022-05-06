@@ -1,13 +1,12 @@
 $(document).ready(function () {
-  var APIKey = "d6ab865b32d84e9ca4e3a42e1135f832";
+  // var APIKey = "d6ab865b32d84e9ca4e3a42e1135f832";
   var weatherAPIKey = "a518a026feaedaffc332be5dc7ca9090";
 
-  var locationId = "";
   function getPlacesData(placeName) {
     const settings = {
       async: true,
       crossDomain: true,
-      url: `https://travel-advisor.p.rapidapi.com/locations/search?query=${placeName}&limit=1&offset=0&units=mi&location_id=1&currency=USD&sort=relevance&lang=en_US`,
+      url: `https://travel-advisor.p.rapidapi.com/locations/search?query=${placeName}&limit=5&offset=0&units=mi&location_id=1&currency=USD&sort=relevance&lang=en_US`,
       method: "GET",
       headers: {
         "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com",
@@ -17,8 +16,8 @@ $(document).ready(function () {
 
     $.ajax(settings)
       .done(function (response) {
-        console.log(response);
         showData(response);
+        showCarouselData(response);
       })
       .fail(function (response) {
         console.log("Error to get data:" + response["responseText"]);
@@ -32,10 +31,9 @@ $(document).ready(function () {
       method: "GET",
       datatype: "jsonp",
     }).then(function (response) {
-      console.log(response);
       let widget = show(response);
-      const lon = response.coord.lon;
-      const lat = response.coord.lat;
+      let lon = response.coord.lon;
+      let lat = response.coord.lat;
       $("#current-weather").html(widget);
     });
   }
@@ -44,8 +42,8 @@ $(document).ready(function () {
     let country = response.data[0].result_object.ancestors[1].name;
     let destinationStr = response.data[0].result_object.location_string;
     let destinationGeoInfo = response.data[0].result_object.geo_description;
-    //console.log(locationId + "-" + destinationStr);
-    //console.log(destinationGeoInfo);
+    let log = response.data[0].result_object.latitude;
+    let lat = response.data[0].result_object.longitude;
     $("#country").html(country);
     $("#destination").html(destinationStr);
     $("#destinationInfo").html(destinationGeoInfo);
@@ -77,6 +75,28 @@ $(document).ready(function () {
      </div>`;
   }
 
+  function showCarouselData(response) {
+    $("#Slide1").attr(
+      "src",
+      response.data[0].result_object.photo.images.large.url
+    );
+    $("#Slide2").attr(
+      "src",
+      response.data[1].result_object.photo.images.large.url
+    );
+    $("#Slide3").attr(
+      "src",
+      response.data[2].result_object.photo.images.large.url
+    );
+    $("#Slide4").attr(
+      "src",
+      response.data[3].result_object.photo.images.large.url
+    );
+    $("#Slide5").attr(
+      "src",
+      response.data[4].result_object.photo.images.large.url
+    );
+  }
   // event handlers
   // Check for click events on the navbar burger icon
   $(".navbar-burger").click(function () {
@@ -89,9 +109,34 @@ $(document).ready(function () {
     var placeName = $("#search").val().toLowerCase();
 
     if (placeName.trim() != "") {
-      console.log(placeName);
+      // console.log(placeName);
       getPlacesData(placeName);
       getCurrentWeatherData(placeName);
     }
   });
 });
+
+// Initialize all div with carousel class
+var carousels = bulmaCarousel.attach(".carousel", {
+  initialSlide: 0,
+  slidesToShow: 1,
+  navigation: true,
+  navigationKeys: true,
+});
+
+// Loop on each carousel initialized
+for (var i = 0; i < carousels.length; i++) {
+  // Add listener to  event
+  carousels[i].on("before:show", (state) => {
+    console.log(state);
+  });
+}
+
+// Access to bulmaCarousel instance of an element
+var element = $("#my-element");
+if (element && element.bulmaCarousel) {
+  // bulmaCarousel instance is available as element.bulmaCarousel
+  element.bulmaCarousel.on("before-show", function (state) {
+    console.log(state);
+  });
+}
