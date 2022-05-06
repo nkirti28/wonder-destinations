@@ -2,7 +2,7 @@
 
 **Wonder Destinations** is a travel guide for tourists looking to travel to exciting new places. Find hiking trails or get tickets for events happening nearby!
 
-[View Live Site](https://carlosrrdev.github.io/wonder-destinations/)
+[View Live Site](https://nkirti28.github.io/wonder-destinations/)
 
 ## Site Preview
 
